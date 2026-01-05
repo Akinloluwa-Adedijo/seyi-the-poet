@@ -1,0 +1,28 @@
+export const musicItems = [
+  {
+    id: 1,
+    linkTitle: "Stream GODOT",
+    title: "GODOT: A Performance of Self",
+    year: 2025,
+    imgSrc: "/gifs/fwut_viz.gif",
+    imgAlt: "FWUT Visualizer",
+    imgWidth: 800,
+    imgHeight: 450,
+    href: "https://seyithepoet.bandcamp.com/album/godot-act-1-a-performance-of-self",
+    cursorTitle: "Listen to FWUT",
+    onHome: true,
+  },
+  {
+    id: 4,
+    linkTitle: "Watch Samuel?",
+    title: "Samuel?",
+    year: 2024,
+    imgSrc: "/gifs/samuel.gif",
+    imgAlt: "Ṣamuel Video Preview",
+    imgWidth: 800,
+    imgHeight: 450,
+    href: "https://youtu.be/Ha2gxgRqbgM?si=ZuWOIccnviYHfEHE",
+    cursorTitle: "Watch Samuel?",
+    onHome: true,
+  },
+];
