@@ -3,19 +3,15 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: "Satoshi", "Inter", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
-}
-
-@font-face {
-  font-family: "Satoshi";
-  src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
-  font-style: normal;
-  font-display: swap;
+  font-family: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", 
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .font-instrument {
-  font-family: "Instrument Serif", serif;
+  font-family: var(--font-instrument), Georgia, "Times New Roman", serif;
   font-style: italic;
 }
 
