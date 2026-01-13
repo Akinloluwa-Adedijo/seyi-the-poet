@@ -1,10 +1,11 @@
-'use client'
+"use client";
 import { motion, useInView } from "motion/react";
 import React, { useRef } from "react";
 
 type SectionWrapperProps = {
   title: string;
   children: React.ReactNode;
+  padding?: boolean;
   type?: "default" | "contact";
 };
 
@@ -18,7 +19,12 @@ const opacity = {
   },
 };
 
-const SectionWrapper = ({ title, children, type = "default" }: SectionWrapperProps) => {
+const SectionWrapper = ({
+  title,
+  children,
+  type = "default",
+  padding = true,
+}: SectionWrapperProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, {
     once: true,
@@ -27,12 +33,23 @@ const SectionWrapper = ({ title, children, type = "default" }: SectionWrapperPro
     <main className="py-30">
       <motion.section
         ref={sectionRef}
-        className= {type === "contact" ? "flex flex-col lg:flex-row items-start gap-10 p-5 overflow-hidden" : "flex flex-col items-start gap-10 p-5 overflow-hidden"}
+        className={
+          `${padding ? "p-5 " : " "}` +
+          (type === "contact"
+            ? "flex flex-col lg:flex-row items-start gap-10 overflow-hidden"
+            : "flex flex-col items-start gap-10 overflow-hidden")
+        }
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
         variants={opacity}
       >
-        <h2 className= {type === "contact" ? "w-full font-instrument text-fg" : "font-instrument text-fg"}>
+        <h2
+          className={
+            type === "contact"
+              ? "w-full font-instrument text-fg"
+              : "font-instrument text-fg"
+          }
+        >
           {title}
         </h2>
 

@@ -1,33 +1,24 @@
-"use client"
+"use client";
 import SectionWrapper from "@/components/SectionWrapper/SectionWrapper";
 // import useDocumentTitle from "@/utils/useDocumentTitle.js";
 import { MusicCard } from "@/components/MusicCard/MusicCard";
-import { musicItems } from "@/data/music"; 
+import { musicItems } from "@/data/music";
 import Layout from "@/Layout/Layout";
-
+import { useMusicData } from "@/hooks/useMusicData";
 
 const Music = () => {
-//   useDocumentTitle("Ṣèyí,ThePoet | Music");
+  //   useDocumentTitle("Ṣèyí,ThePoet | Music");
+  const { data: musicData } = useMusicData();
 
   return (
     <Layout>
-    <SectionWrapper title="Music">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
-        {musicItems?.map((item, index) => (
-          <MusicCard
-            key={index}
-            title={item.title}
-            year={item.year}
-            imgSrc={item.imgSrc}
-            width={item.imgWidth}
-            height={item.imgHeight}
-            imgAlt={item.imgAlt}
-            href={item.href}
-            linkTitle={item.linkTitle}
-          />
-        ))}
-      </div>
-    </SectionWrapper>
+      <SectionWrapper title="Music" padding={false}>
+        <div className="grid grid-cols-1 gap-5 w-full">
+          {musicData?.map((item, index) => (
+            <MusicCard key={index} music={item} />
+          ))}
+        </div>
+      </SectionWrapper>
     </Layout>
   );
 };

@@ -2,7 +2,8 @@
 
 import { useSanityData } from "./useSanityData";
 
-const homeDescriptionQuery = '*[_type == "homeDescription" && defined(_id)][0]{_id, Description}';
+const homeDescriptionQuery =
+  '*[_type == "homeDescription" && defined(_id)][0]{_id, Description}';
 
 export interface HomeDescription {
   _id: string;

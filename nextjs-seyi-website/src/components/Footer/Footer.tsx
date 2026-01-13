@@ -36,8 +36,11 @@ const listenLinks = [
     name: "Spotify",
     href: "https://open.spotify.com/album/0ZI2UGrhkIBbBMdA08Wqq3?si=ky9LGwn8SSaNUGcfhLkRBQ",
   },
-{name: "Apple Music", href: "https://music.apple.com/ca/album/godot-a-performance-of-self-ep/1856356056"},
-{name: "Youtube", href: "https://www.youtube.com/@seyithepoet.mp4"},
+  {
+    name: "Apple Music",
+    href: "https://music.apple.com/ca/album/godot-a-performance-of-self-ep/1856356056",
+  },
+  { name: "Youtube", href: "https://www.youtube.com/@seyithepoet.mp4" },
 ];
 
 interface RenderLinkProps {
@@ -48,14 +51,14 @@ interface RenderLinkProps {
 const RenderLinks = ({ title, links }: RenderLinkProps) => {
   return (
     <div className="flex flex-col gap-2 text-base uppercase font-semibold">
-      <p className="font-normal text-gray-900">{title}</p>
+      <p className="font-normal text-bg">{title}</p>
       {links.map((link, index) => (
         <a
           key={index}
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-black-950 hover:text-black-900"
+          className="text-fg"
         >
           {link.name}
         </a>

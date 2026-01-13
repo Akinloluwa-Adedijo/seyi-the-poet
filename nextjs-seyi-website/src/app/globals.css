@@ -3,8 +3,15 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", 
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    var(--font-satoshi),
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -16,8 +23,8 @@
 }
 
 @theme {
-  --color-fg: oklch(0.2103 0.0059 285.89);
-  --color-bg:oklch(0.983 0.0195 87.51);
+  --color-bg: oklch(0.2103 0.0059 285.89);
+  --color-fg: oklch(0.983 0.0195 87.51);
   --color-accent: oklch(0.83 0.1532 81.16);
   --color-secondary: oklch(0.4419 0.0146 285.79);
 
@@ -50,9 +57,9 @@ body {
   background: var(--color-fg);
 }
 
-.modal-content{
-    scrollbar-width: 10px;
-    scrollbar-color: var(--color-fg) var(--color-accent);
+.modal-content {
+  scrollbar-width: 10px;
+  scrollbar-color: var(--color-fg) var(--color-accent);
 }
 
 /* ------------------------- Scaling System by Osmo [https://osmo.supply/] -------------------------  */
@@ -72,7 +79,6 @@ body {
   --size-font: calc(
     var(--size-container) / (var(--size-container-ideal) / var(--size-unit))
   );
-  
 }
 /* Tablet */
 @media screen and (max-width: 991px) {
@@ -103,7 +109,7 @@ body {
   /* Hide scrollbar for Firefox */
   scrollbar-width: none;
   /* Hide scrollbar for IE and Edge */
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
 }
 
 /* For Chrome, Safari, Opera, and other WebKit browsers */
@@ -113,50 +119,54 @@ body {
   height: 0; /* Hides horizontal scrollbar in WebKit */
 }
 
-h1, h2{
+h1,
+h2 {
   font-size: clamp(48px, 4em, 6em);
   line-height: 1;
 }
-p{
+p {
   line-height: 120%;
 }
 
-.p-heading{
-    font-size: clamp(24px, 1.5em, 1.25em);
+.p-heading {
+  font-size: clamp(24px, 1.5em, 1.25em);
 }
 
-.p-subheading{
-    font-size: clamp(16px, 1em, 1em);
+.p-subheading {
+  font-size: clamp(16px, 1em, 1em);
 }
-button{
-    font-size: clamp(1em, 20px, 1.25em);  
-    font-weight: 700;
-    text-transform: uppercase;
+button {
+  font-size: clamp(1em, 20px, 1.25em);
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
-.menu-nav{ padding: 1.25rem 1.25rem 0 1.25rem;}
+.menu-nav {
+  padding: 1.25rem 1.25rem 0 1.25rem;
+}
 
-.menu-link a, .menu-link
-{
+.menu-link a,
+.menu-link {
   /* display: block; */
   position: relative;
   overflow: hidden;
 }
-.menu-link a,.menu-social a{
+.menu-link a,
+.menu-social a {
   display: block;
 }
-.menu-link a{
+.menu-link a {
   /* font-size: clamp(48px, 4em, 6em); */
   /* font-size: min(4em, 48px); */
-    will-change: transform;
-    overflow: hidden;
+  will-change: transform;
+  overflow: hidden;
 }
-.menu-social a{
+.menu-social a {
   /* font-size: clamp(20px, 1.25em, 2em); */
   font-size: 1.5rem;
   /* font-size: 1.5em; */
-    will-change: transform;
-    transform: translateY(-100%);
+  will-change: transform;
+  transform: translateY(-100%);
 }
 /* .menu-link, .menu-social{
 clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);  
@@ -168,27 +178,27 @@ clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);
   font-size: clamp(48px, 3.5em, 6em);
   /* font-size: min(4em, 48px); */
   font-weight: 900;
-    line-height: 1;
-    transition: transform .55s cubic-bezier(.65, .05, 0, 1);
-    position: relative;
+  line-height: 1;
+  transition: transform 0.55s cubic-bezier(0.65, 0.05, 0, 1);
+  position: relative;
 }
 
-.menu-link-heading{ 
-  text-shadow: 0px 1em 0px var(--color-bg); 
+.menu-link-heading {
+  text-shadow: 0px 1em 0px var(--color-bg);
 }
 .menu-link-bg {
   z-index: 0;
   background-color: var(--color-fg);
   transform-origin: 50% 100%;
   transform-style: preserve-3d;
-  transition: transform .55s cubic-bezier(.65, .05, 0, 1);
+  transition: transform 0.55s cubic-bezier(0.65, 0.05, 0, 1);
   position: absolute;
   inset: 0%;
   transform: scale3d(1, 0, 1);
 }
 
-
-.menu-overlay{top: 0;
+.menu-overlay {
+  top: 0;
   left: 0;
   position: fixed;
   width: 100%;
@@ -201,49 +211,48 @@ clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);
   clip-path: polygon(0% 0%, 100% 0, 100% 0%, 0% 0%);
   overflow: hidden;
 }
-.text-link{
-    position: relative;
-    /* display: inline-block; */
-    text-decoration: none;
+.text-link {
+  position: relative;
+  /* display: inline-block; */
+  text-decoration: none;
 }
-.text-link::after{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--color-fg);
-    transform-origin: right center;
-    transform: scale(0,1);
-    transition: transform 0.4s cubic-bezier(0.83, 0, 0.17, 1);
-}
-
-.text-link:hover::after{
-    transform-origin: left center;
-    transform: scale(1,1);
+.text-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-g);
+  transform-origin: right center;
+  transform: scale(0, 1);
+  transition: transform 0.4s cubic-bezier(0.83, 0, 0.17, 1);
 }
 
+.text-link:hover::after {
+  transform-origin: left center;
+  transform: scale(1, 1);
+}
 
-.line{
+.line {
   overflow: hidden;
   transform: translateY(100%);
   will-change: transform;
 }
 
-.img-container{
-    position: relative;
-    overflow: hidden;
-}    
-.img-container img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.img-container {
+  position: relative;
+  overflow: hidden;
+}
+.img-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* .img-container:hover img{
@@ -251,67 +260,75 @@ clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);
     transition: scale 0.3s cubic-bezier(0.83, 0, 0.17, 1);
 } */
 
-.read-text{
-    opacity: 1;
-    transform: translateX(10em);
-    transition: transform 0.3s cubic-bezier(0.83, 0, 0.17, 1);
+.read-text {
+  opacity: 1;
+  transform: translateX(10em);
+  transition: transform 0.3s cubic-bezier(0.83, 0, 0.17, 1);
 }
 
+.background {
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-accent);
+  position: absolute;
+  top: -100%;
+  z-index: 1;
+}
 
-    .background{
-      height: 100%;
-      width: 100%;
-      background-color: var(--color-accent);
-      position: absolute;
-      top: -100%;
-      z-index: 1;
-    }
+.background-outer {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /* background-color: var(--color-accent); */
+  z-index: 1;
+  overflow: hidden;
+  will-change: transform;
+}
+.background-inner {
+  background-color: var(--color-accent);
+  position: absolute;
+  white-space: nowrap;
+  height: 100%;
+  width: 100%;
+  top: 100%;
+  z-index: 1;
+}
 
-  .background-outer{
-    display: flex;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    /* background-color: var(--color-accent); */
-    z-index: 1;
-    overflow: hidden;
-    will-change: transform;
-  }
-  .background-inner{
-    background-color: var(--color-accent);
-    position: absolute;
-    white-space: nowrap;
-    height: 100%;
-    width: 100%;
-    top: 100%;
-    z-index: 1;
-  }
-    
-@media (hover:hover){
+@media (hover: hover) {
   /* Menu Large Links */
-  .menu-link:hover .menu-link-heading{
+  .menu-link:hover .menu-link-heading {
     transform: translate(0px, -1em);
-    transition-delay: 0.1s; }
-  .menu-link:hover .menu-link-bg{
-    transform: scale(1,1) 
+    transition-delay: 0.1s;
   }
-    ul:hover .read-text{
+  .menu-link:hover .menu-link-bg {
+    transform: scale(1, 1);
+  }
+  ul:hover .read-text {
     transform: translateX(0);
   }
-    /* ul:hover .background{
+  /* ul:hover .background{
       top: 0;
     } */
 }
 
 /* Review Modal Slide In Styles */
 @keyframes overlayShow {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideInRight {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .modal-overlay {
@@ -321,5 +338,6 @@ clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);
 
 .modal-content-slide {
   animation: slideInRight 0.4s cubic-bezier(0.83, 0, 0.17, 1);
-  box-shadow: -10px 0 30px 0.4s cubic-bezier(0.83, 0, 0.17, 1) rgba(0,0,0,0.1);
+  box-shadow: -10px 0 30px 0.4s cubic-bezier(0.83, 0, 0.17, 1)
+    rgba(0, 0, 0, 0.1);
 }

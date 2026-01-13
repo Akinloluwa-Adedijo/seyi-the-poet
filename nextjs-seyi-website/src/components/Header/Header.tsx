@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import { navLinks, footerLinks } from "@/data/navData";
 import gsap from "gsap";
@@ -9,7 +8,7 @@ import { useLenis } from "@/contexts/LenisContext";
 gsap.registerPlugin(useGSAP);
 
 const Header = () => {
-    const { lenis } = useLenis();
+  const { lenis } = useLenis();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -19,34 +18,36 @@ const Header = () => {
 
   const tl = useRef<gsap.core.Timeline | null>(null);
 
-  useGSAP(() => {
-    if (!menuOverlayRef.current) return;
+  useGSAP(
+    () => {
+      if (!menuOverlayRef.current) return;
 
-    tl.current = gsap.timeline({ paused: true })
-      .to(menuOverlayRef.current, {
-        duration: 1,
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-        ease: "power2.out",
-      })
-      .fromTo(
-        menuLinksRef.current,
-        {
-          opacity: 0,
-          y: 100,
-          stagger: 0.05,
-          duration: 0.75,
-          ease: "power1.inOut",
-        },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.05,
-          duration: 0.75,
-          ease: "power1.inOut",
-        },
-        "<",
-      )
-      .fromTo(
+      tl.current = gsap
+        .timeline({ paused: true })
+        .to(menuOverlayRef.current, {
+          duration: 1,
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+          ease: "power2.out",
+        })
+        .fromTo(
+          menuLinksRef.current,
+          {
+            opacity: 0,
+            y: 100,
+            stagger: 0.05,
+            duration: 0.75,
+            ease: "power1.inOut",
+          },
+          {
+            opacity: 1,
+            y: 0,
+            stagger: 0.05,
+            duration: 0.75,
+            ease: "power1.inOut",
+          },
+          "<"
+        )
+        .fromTo(
           menuSocialRef.current,
           {
             opacity: 0,
@@ -62,9 +63,11 @@ const Header = () => {
             duration: 0.75,
             ease: "power1.inOut",
           },
-          "<",
-        )
-  }, { scope: menuOverlayRef });
+          "<"
+        );
+    },
+    { scope: menuOverlayRef }
+  );
 
   useEffect(() => {
     if (tl.current) {
@@ -72,7 +75,7 @@ const Header = () => {
         tl.current.play();
         lenis?.stop();
         document.body.style.overflow = "hidden";
-        } else {
+      } else {
         tl.current.reverse();
         lenis?.start();
         document.body.style.overflow = "";
@@ -91,14 +94,17 @@ const Header = () => {
           />
         </Link>
         <button
-          className="px-4 py-2 bg-accent text-fg cursor-pointer"
+          className="px-4 py-2 bg-fg text-bg cursor-pointer"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           Menu
         </button>
       </nav>
 
-      <div className="menu-overlay h-full flex flex-col justify-between" ref={menuOverlayRef}>
+      <div
+        className="menu-overlay h-full flex flex-col justify-between"
+        ref={menuOverlayRef}
+      >
         <div className="menu-nav flex justify-between items-center">
           <Link href="/">
             <img
@@ -108,42 +114,52 @@ const Header = () => {
             />
           </Link>
           <button
-            className="px-4 py-2 bg-fg text-bg cursor-pointer"
+            className="px-4 py-2 bg-bg text-fg cursor-pointer"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             Close
           </button>
         </div>
 
-          <div className="menu-items flex flex-col justify-center flex-1 gap-1 px-5">
-            {navLinks.map((link, index) => (
-              <div className="menu-link" key={index}>
-                <Link
-                  href={link.href}
-                  ref={(el) => {
-                    if (el) menuLinksRef.current[index] = el;
-                  }}
-                  onClick={() => setIsMenuOpen(false)} 
-                >
-                  <p className="menu-link-heading">{link.title}</p>
-                  <div className="menu-link-bg"/>
-                </Link>
+        <div className="menu-items flex flex-col justify-center flex-1 gap-1 px-5">
+          {navLinks.map((link, index) => (
+            <div className="menu-link" key={index}>
+              <Link
+                href={link.href}
+                className="text-bg"
+                ref={(el) => {
+                  if (el) menuLinksRef.current[index] = el;
+                }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <p className="menu-link-heading">{link.title}</p>
+                <div className="menu-link-bg" />
+              </Link>
             </div>
-            ))}
-          </div>
-          <div className="menu-social flex flex-wrap gap-5 p-5">
-            {footerLinks.map((link, index) => (
-                <Link href={link.href} key={index} target="_blank" rel="noopener noreferrer" className="font-medium text-fg text-link" ref={(el) => {
-                  if (el) menuSocialRef.current[index] = el;
-                }}>{link.title}</Link>
-            ))}
-          </div>
+          ))}
+        </div>
+        <div className="menu-social flex flex-wrap gap-5 p-5">
+          {footerLinks.map((link, index) => (
+            <Link
+              href={link.href}
+              key={index}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-bg text-link"
+              ref={(el) => {
+                if (el) menuSocialRef.current[index] = el;
+              }}
+            >
+              {link.title}
+            </Link>
+          ))}
+        </div>
       </div>
     </header>
   );
 };
 
-export default Header; 
+export default Header;
 
 // https://codepen.io/cbolson/pen/EaVYoVd FOR NAV LINKS
 // https://codepen.io/cbolson/pen/emYWrMg FOR MENU

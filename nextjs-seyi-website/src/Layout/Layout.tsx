@@ -9,9 +9,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <LenisProvider>
       <Header />
-      <main>
-        {children}
-      </main>
+      <main className="flex flex-col gap-10">{children}</main>
       {/* <ScrollToTop /> */}
       {/* <CustomCursor />  */}
       <Footer />
