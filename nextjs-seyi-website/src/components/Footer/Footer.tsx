@@ -58,7 +58,7 @@ const RenderLinks = ({ title, links }: RenderLinkProps) => {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-fg"
+          className="text-bg"
         >
           {link.name}
         </a>
