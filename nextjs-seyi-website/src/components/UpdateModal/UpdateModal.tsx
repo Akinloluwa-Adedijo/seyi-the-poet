@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import type { UpdateItem } from "@/app/updates/page";
 import { useEffect } from "react";
 import CustomImage from "../CustomImage/CustomImage";
@@ -55,7 +55,7 @@ const UpdateModal = ({ isOpen, onClose, updateItem }: UpdateModalProps) => {
             animate={{ x: "0%" }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.4, ease: bezier }}
-            className="fixed bg-yellow-300 w-full max-w-2xl flex flex-col overflow-hidden z-100 p-5 text-black h-full top-0 right-0 md:h-auto md:top-5 md:bottom-5 md:right-5 md:rounded-3xl"
+            className="fixed bg-accent w-full max-w-2xl flex flex-col overflow-hidden z-100 p-5 text-bg h-full top-0 right-0 md:h-auto md:top-5 md:bottom-5 md:right-5 md:rounded-3xl"
           >
             <div className="flex-none">
               <button
