@@ -177,7 +177,7 @@ clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);
   text-transform: uppercase;
   font-size: clamp(48px, 3.5em, 6em);
   /* font-size: min(4em, 48px); */
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1;
   transition: transform 0.55s cubic-bezier(0.65, 0.05, 0, 1);
   position: relative;

@@ -8,7 +8,7 @@ export const PublicationCard = ({
 }: {
   publication: publications;
 }) => {
-  console.log(publication);
+  // console.log(publication);
   return (
     <a
       href={publication.url.current}
