@@ -2,9 +2,10 @@ import SectionWrapper from "../../components/SectionWrapper/SectionWrapper";
 import { PublicationCard } from "../../components/PublicationCard/PublicationCard";
 import Layout from "@/Layout/Layout";
 import { publicationsData } from "@/hooks/queries";
+import { publications } from "@/types/publications";
 
 export default async function Press() {
-  const publications = await publicationsData();
+  const publications: publications[] = await publicationsData();
   return (
     <Layout>
       <SectionWrapper title="In the Press" padding={true}>

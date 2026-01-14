@@ -1,6 +1,5 @@
 import CustomImage from "../CustomImage/CustomImage";
 import { publicationsData } from "@/hooks/queries";
-import convertImage from "@/utils/convertImage";
 import { publications } from "@/types/publications";
 import { urlFor } from "@/sanity/client";
 
