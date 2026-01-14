@@ -59,7 +59,7 @@ body {
 
 .modal-content {
   scrollbar-width: 10px;
-  scrollbar-color: var(--color-fg) var(--color-accent);
+  scrollbar-color: var(--color-bg) var(--color-accent);
 }
 
 /* ------------------------- Scaling System by Osmo [https://osmo.supply/] -------------------------  */
@@ -280,7 +280,6 @@ clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);
   position: absolute;
   height: 100%;
   width: 100%;
-  /* background-color: var(--color-accent); */
   z-index: 1;
   overflow: hidden;
   will-change: transform;
@@ -307,9 +306,10 @@ clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);
   ul:hover .read-text {
     transform: translateX(0);
   }
-  /* ul:hover .background{
-      top: 0;
-    } */
+  /* ul:hover {
+    color: var(--color-bg);
+    transition: color 0.3s cubic-bezier(0.83, 0, 0.17, 1);
+  } */
 }
 
 /* Review Modal Slide In Styles */

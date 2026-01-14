@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useEffect } from "react";
 import CustomImage from "../CustomImage/CustomImage";
 import type { musicReviewItem } from "../../data/musicReviews";
@@ -57,7 +57,7 @@ const ReviewModal = ({ isOpen, onClose, item }: ReviewModalProps) => {
             animate={{ x: "0%" }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.4, ease: bezier }}
-            className="fixed bg-accent w-full max-w-2xl flex flex-col z-100 p-5 text-fg h-full top-0 right-0 md:h-auto md:top-5 md:bottom-5 md:right-5 md:rounded-3xl"
+            className="fixed bg-accent w-full max-w-2xl flex flex-col z-100 p-5 text-bg h-full top-0 right-0 md:h-auto md:top-5 md:bottom-5 md:right-5 md:rounded-3xl"
           >
             <div className="flex-none">
               <button
@@ -100,7 +100,10 @@ const ReviewModal = ({ isOpen, onClose, item }: ReviewModalProps) => {
 
                           {it.text.map((text, index) => {
                             return (
-                              <p key={index} className="py-2 font-medium p-subheading">
+                              <p
+                                key={index}
+                                className="py-2 font-medium p-subheading"
+                              >
                                 {text}
                               </p>
                             );
@@ -117,7 +120,10 @@ const ReviewModal = ({ isOpen, onClose, item }: ReviewModalProps) => {
                           <div key={index}>
                             {it.text.map((text, index) => {
                               return (
-                                <p key={index} className="py-2 font-medium p-subheading">
+                                <p
+                                  key={index}
+                                  className="py-2 font-medium p-subheading"
+                                >
                                   {text}
                                 </p>
                               );
