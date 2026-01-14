@@ -1,37 +1,29 @@
-"use client";
-
-import { useRef } from "react";
 import LandingPage from "@/components/LandingPage/LandingPage";
 import Description from "@/components/Description/Description";
-import { useLandingPageData } from "@/hooks/useLandingPageData";
+import { descriptionData, musicData, publicationsData } from "@/hooks/queries";
 import Layout from "@/Layout/Layout";
-import { MusicCard } from "@/components/MusicCard/MusicCard";
 import Link from "next/link";
-import Publications from "@/components/Publications/Publications";
-import { musicItems } from "@/data/music";
-import { musicCards, useMusicData } from "@/hooks/useMusicData";
+import { musicCards } from "@/types/musicCards";
+import { MusicCard } from "@/components/MusicCard/MusicCard";
+import { publications } from "@/types/publications";
+import { PublicationCard } from "@/components/PublicationCard/PublicationCard";
 
-export default function Home() {
-  const { data: homeDescription, isLoading } = useLandingPageData();
-  const { data: musicData } = useMusicData();
-  const homeRef = useRef<HTMLDivElement>(null);
-  console.log(musicData);
-
-  const descriptionText = homeDescription?.Description;
-
-  if (isLoading) return <> </>;
+export default async function Home() {
+  const homeDescription = await descriptionData();
+  const music: musicCards[] = await musicData();
+  const publications: publications[] = await publicationsData();
 
   return (
     <>
       <Layout>
         <LandingPage />
-        <Description description={descriptionText} />
+        <Description description={homeDescription.Description} />
         <section className="flex flex-col gap-10  w-full">
           <h2 className="font-instrument text-5xl md:text-7xl lg:text-8xl italic p-5">
             Music
           </h2>
 
-          {musicData?.map((music: musicCards) => {
+          {music?.map((music: musicCards) => {
             // if (music.onHome) {
             return <MusicCard music={music} key={music._id} />;
             // }
@@ -47,7 +39,15 @@ export default function Home() {
               See More
             </Link>
           </div>
-          <Publications />
+          {/* <Publications /> */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {publications?.slice(0, 3).map((publication) => (
+              <PublicationCard
+                publication={publication}
+                key={publication._id}
+              />
+            ))}
+          </div>
         </section>
       </Layout>
     </>

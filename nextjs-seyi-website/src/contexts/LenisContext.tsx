@@ -1,3 +1,4 @@
+"use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import Lenis from "lenis";
 
@@ -32,8 +33,6 @@ export const LenisProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <LenisContext.Provider value={{ lenis }}>
-      {children}
-    </LenisContext.Provider>
+    <LenisContext.Provider value={{ lenis }}>{children}</LenisContext.Provider>
   );
 };

@@ -1,12 +1,10 @@
-"use client";
 import SectionWrapper from "../../components/SectionWrapper/SectionWrapper";
-import { PublicationCard } from "../../components/Publications/Publications";
-import { publications } from "../../data/publications";
+import { PublicationCard } from "../../components/PublicationCard/PublicationCard";
 import Layout from "@/Layout/Layout";
-import { usePublicationsData } from "@/hooks/usePublications";
+import { publicationsData } from "@/hooks/queries";
 
-export default function Press() {
-  const { data: publications } = usePublicationsData();
+export default async function Press() {
+  const publications = await publicationsData();
   return (
     <Layout>
       <SectionWrapper title="In the Press" padding={true}>

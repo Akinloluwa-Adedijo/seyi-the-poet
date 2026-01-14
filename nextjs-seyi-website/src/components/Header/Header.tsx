@@ -1,10 +1,11 @@
+"use client";
 import { useEffect, useRef, useState } from "react";
 import { navLinks, footerLinks } from "@/data/navData";
 import gsap from "gsap";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import { useLenis } from "@/contexts/LenisContext";
-
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
 gsap.registerPlugin(useGSAP);
 
 const Header = () => {
@@ -15,6 +16,7 @@ const Header = () => {
   const menuOverlayRef = useRef<HTMLDivElement>(null);
   const menuLinksRef = useRef<HTMLAnchorElement[]>([]);
   const menuSocialRef = useRef<HTMLAnchorElement[]>([]);
+  const { scrollYProgress } = useScroll();
 
   const tl = useRef<gsap.core.Timeline | null>(null);
 
@@ -83,14 +85,24 @@ const Header = () => {
     }
   }, [isMenuOpen]);
 
+  const rotate = useTransform(
+    useSpring(scrollYProgress, {
+      stiffness: 50,
+      damping: 20,
+      restDelta: 0.001,
+    }),
+    [0, 1],
+    [0, 360]
+  );
   return (
     <header>
       <nav className="flex justify-between items-center p-5 fixed  w-full z-5">
         <Link href="/">
-          <img
+          <motion.img
             src="/seyi-logo.svg"
             alt="Ṣèyí,ThePoet Logo"
             className="w-16 h-16"
+            style={{ rotate }}
           />
         </Link>
         <button

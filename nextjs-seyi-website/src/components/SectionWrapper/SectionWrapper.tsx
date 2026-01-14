@@ -22,7 +22,6 @@ const opacity = {
 const SectionWrapper = ({
   title,
   children,
-  type = "default",
   padding = true,
 }: SectionWrapperProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -35,24 +34,15 @@ const SectionWrapper = ({
         ref={sectionRef}
         className={
           `${padding ? "p-5 " : " "}` +
-          (type === "contact"
-            ? "flex flex-col lg:flex-row items-start gap-10 overflow-hidden"
-            : "flex flex-col items-start gap-10 overflow-hidden")
+          "flex flex-col items-start gap-10 overflow-hidden"
         }
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        variants={opacity}
+        // variants={opacity}
       >
-        <h2
-          className={
-            type === "contact"
-              ? "w-full font-instrument text-fg"
-              : "font-instrument text-fg"
-          }
-        >
+        <h2 className={`font-instrument text-fg ${padding ? "" : "px-5"}`}>
           {title}
         </h2>
-
         {children}
       </motion.section>
     </main>
