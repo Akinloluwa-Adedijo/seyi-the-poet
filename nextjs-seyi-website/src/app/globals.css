@@ -133,7 +133,7 @@ p {
 }
 
 .p-subheading {
-  font-size: clamp(16px, 1em, 1em);
+  font-size: clamp(16px, 1.25em, 1em);
 }
 button {
   font-size: clamp(1em, 20px, 1.25em);
@@ -260,13 +260,14 @@ clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);
     transition: scale 0.3s cubic-bezier(0.83, 0, 0.17, 1);
 } */
 
-.read-text {
+/* .read-text {
   opacity: 1;
   transform: translateX(10em);
   transition: transform 0.3s cubic-bezier(0.83, 0, 0.17, 1);
-}
+} */
 
-.background {
+fore formwer list animwation
+/* .background {
   height: 100%;
   width: 100%;
   background-color: var(--color-accent);
@@ -292,9 +293,22 @@ clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);
   width: 100%;
   top: 100%;
   z-index: 1;
+} */
+.list li {
+  will-change: transform;
 }
 
-@media (hover: hover) {
+.list li:nth-child(1),
+.list li:nth-child(4) {
+  transition: transform 0.3s cubic-bezier(0.83, 0, 0.17, 1);
+}
+.list-bg {
+  position: absolute;
+  inset: 0%;
+  z-index: 0;
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
   /* Menu Large Links */
   .menu-link:hover .menu-link-heading {
     transform: translate(0px, -1em);
@@ -303,13 +317,26 @@ clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);
   .menu-link:hover .menu-link-bg {
     transform: scale(1, 1);
   }
-  ul:hover .read-text {
+  .list:hover .read-text {
     transform: translateX(0);
   }
-  /* ul:hover {
+
+  .list:hover li {
     color: var(--color-bg);
-    transition: color 0.3s cubic-bezier(0.83, 0, 0.17, 1);
-  } */
+  }
+  .list li {
+    transition: transform 0.3s cubic-bezier(0.83, 0, 0.17, 1);
+  }
+  .list:hover li:nth-child(1) {
+    transform: translateX(1em);
+  }
+  .list:hover li:nth-child(4) {
+    transform: translateX(-1em);
+  }
+
+  .list:hover .list-bg {
+    background-color: var(--color-accent);
+  }
 }
 
 /* Review Modal Slide In Styles */

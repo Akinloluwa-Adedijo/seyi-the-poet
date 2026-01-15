@@ -2,7 +2,7 @@ export const navLinks = [
   { title: "Music", href: "/music" },
   { title: "Press", href: "/press" },
   { title: "Gallery", href: "/gallery" },
-  { title: "Poems", href: "/poems-reviews" },
+  { title: "Offstage", href: "/offstage" },
   { title: "Updates", href: "/updates" },
   { title: "About", href: "/about" },
   { title: "Contact", href: "/contact" },

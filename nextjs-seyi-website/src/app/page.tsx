@@ -7,6 +7,12 @@ import { musicCards } from "@/types/musicCards";
 import { MusicCard } from "@/components/MusicCard/MusicCard";
 import { publications } from "@/types/publications";
 import { PublicationCard } from "@/components/PublicationCard/PublicationCard";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ṣèyí,ThePoet | Artist",
+  description: "Ṣèyí,ThePoet Website",
+};
 
 export default async function Home() {
   const homeDescription = await descriptionData();

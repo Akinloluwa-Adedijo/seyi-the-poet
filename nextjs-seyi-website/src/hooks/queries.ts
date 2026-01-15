@@ -26,3 +26,9 @@ export const publicationsData = async () => {
 
   return await client.fetch(publicationsQuery, {}, options);
 };
+
+export const musicReviewsData = async () => {
+  const musicReviewsQuery =
+    '*[_type=="reviews"]|order(publishedAt asc){_id, albumName, artistName,reviewYear,reviewImage, publishedAt, reviewContent }';
+  return await client.fetch(musicReviewsQuery, {}, options);
+};

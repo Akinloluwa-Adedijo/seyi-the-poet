@@ -1,16 +1,16 @@
 "use client";
 import { useEffect } from "react";
 import CustomImage from "../CustomImage/CustomImage";
-import type { musicReviewItem } from "../../data/musicReviews";
-import type { poemItem } from "../../data/poems";
+import type { MusicReviewItem } from "../../types/musicReviews";
 import { useLenis } from "../../contexts/LenisContext";
 
 import { AnimatePresence, motion } from "motion/react";
+import { urlFor } from "@/sanity/client";
 
 interface ReviewModalProps {
   isOpen: Boolean;
   onClose: () => void;
-  item: musicReviewItem | poemItem | null;
+  item: MusicReviewItem | null;
 }
 
 const ReviewModal = ({ isOpen, onClose, item }: ReviewModalProps) => {
@@ -76,64 +76,37 @@ const ReviewModal = ({ isOpen, onClose, item }: ReviewModalProps) => {
             >
               <div className="py-8">
                 <p className="text-4xl sm:text-7xl uppercase font-black py-2">
-                  {item.name}
+                  {item.albumName}
                 </p>
                 <div className="flex justify-between uppercase  font-medium">
-                  <p>{item.type === "review" ? item.artist : item.theme}</p>
-                  <p>{item.released}</p>
+                  <p>{item.artistName}</p>
+                  <p>{item.reviewYear}</p>
                 </div>
               </div>
 
-              <div>
-                {item.type === "review" ? (
-                  <div>
-                    {item.content.map((it, index) => {
-                      return (
-                        <div key={index}>
-                          <CustomImage
-                            imgSrc={it.imgSrc ?? ""}
-                            imgAlt={it.imgAlt ?? ""}
-                            width={it.width ?? 0}
-                            height={it.height ?? 0}
-                            classname={`h-[500px] ${it.classname}`}
-                          />
+              <CustomImage
+                imgSrc={urlFor(item.reviewImage[0]).url()}
+                imgAlt={`${item.albumName} album cover`}
+                classname={`h-[500px] rounded-3xl`}
+              />
 
-                          {it.text.map((text, index) => {
-                            return (
-                              <p
-                                key={index}
-                                className="py-2 font-medium p-subheading"
-                              >
-                                {text}
-                              </p>
-                            );
-                          })}
-                        </div>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <>
-                    <div>
-                      {item.content.map((it, index) => {
+              <div>
+                {item.reviewContent.map((it, index) => {
+                  return (
+                    <div key={index}>
+                      {it.children?.map((child, index) => {
                         return (
-                          <div key={index}>
-                            {it.text.map((text, index) => {
-                              return (
-                                <p
-                                  key={index}
-                                  className="py-2 font-medium p-subheading"
-                                >
-                                  {text}
-                                </p>
-                              );
-                            })}
-                          </div>
+                          <p
+                            key={index}
+                            className={`py-3 p-subheading ${child.marks[0] === "strong" ? "font-bold" : "font-medium"}`}
+                          >
+                            {child.text}
+                          </p>
                         );
                       })}
                     </div>
-                  </>
-                )}
+                  );
+                })}
               </div>
             </div>
           </motion.div>
