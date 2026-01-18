@@ -40,7 +40,7 @@ export default async function Home() {
             <h2 className="font-instrument  italic">In the Press</h2>
             <Link
               href="/press"
-              className="text-fg border-fg border-2 px-5 py-2 w-fit"
+              className="text-fg border-fg border-2 px-5 py-2 uppercase font-medium"
             >
               See More
             </Link>

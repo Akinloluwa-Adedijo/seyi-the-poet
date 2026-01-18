@@ -14,7 +14,6 @@ interface DescriptionProps {
 
 const Description = ({ description }: DescriptionProps) => {
   const charsRef = useRef<HTMLParagraphElement>(null);
-  const h2Ref = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -47,16 +46,14 @@ const Description = ({ description }: DescriptionProps) => {
         split.revert();
       };
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
   return (
     <section
       className="flex flex-col gap-5 w-full text-fg p-5"
       ref={containerRef}
     >
-      <h2 className="font-instrument text-[2.5em] italic" ref={h2Ref}>
-        About
-      </h2>
+      <h2 className="font-instrument text-[2.5em] italic">About</h2>
       <p
         ref={charsRef}
         style={{ fontSize: "clamp(24px, 5vw, 64px)" }}

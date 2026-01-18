@@ -25,8 +25,8 @@ const LandingPage = () => {
     const tl = gsap.timeline();
     tl.fromTo(
       imageRef.current,
-      { scale: 0, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 1.5, ease: "power3.out" }
+      { opacity: 0 },
+      { opacity: 1, duration: 2, ease: "power3.out" },
     );
   }, []);
 
@@ -37,13 +37,12 @@ const LandingPage = () => {
         <h1 aria-hidden="true" className="sr-only">
           Șèyí,ThePoet
         </h1>
-        {/* <h1 aria-hidden="true" className="">Șèyí,ThePoet</h1> */}
       </div>
       <CustomImage
         imgSrc={image.src}
         imgAlt={image.alt}
         imageRef={imageRef}
-        classname="h-[500px] lg:h-[calc(100vh-6rem)]"
+        classname="h-[500px] lg:h-[100dvh]"
         cursorTitle="Stream GODOT"
       />
     </section>

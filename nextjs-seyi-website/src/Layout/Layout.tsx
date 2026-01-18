@@ -11,7 +11,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <LenisProvider>
       <TransitionProvider>
         <Header />
-        <main className="flex flex-col gap-10">{children}</main>
+        <main className="flex flex-col gap-10 lg:gap-20">{children}</main>
         <Footer />
       </TransitionProvider>
     </LenisProvider>

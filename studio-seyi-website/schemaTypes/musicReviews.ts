@@ -3,7 +3,7 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
 export const reviews = defineType({
   type: 'document',
   name: 'reviews',
-  title: 'Reviews',
+  title: 'Music Reviews',
   fields: [
     defineField({
       type: 'string',
@@ -40,6 +40,12 @@ export const reviews = defineType({
       title: 'Review Content',
       validation: (e) => e.required(),
       of: [defineArrayMember({type: 'block'})],
+    }),
+    defineField({
+      name: 'publishedAt',
+      type: 'datetime',
+      initialValue: () => new Date().toISOString(),
+      validation: (rule) => rule.required(),
     }),
   ],
 })

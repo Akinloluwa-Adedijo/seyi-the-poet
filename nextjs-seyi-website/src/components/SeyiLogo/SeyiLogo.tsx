@@ -16,28 +16,28 @@ const SeyiLogo: React.FC<SeyiLogoProps> = ({
 
   const logoRef = useRef<SVGSVGElement>(null);
 
-  useGSAP(
-    () => {
-      if (!logoRef.current) return;
+  // useGSAP(
+  //   () => {
+  //     if (!logoRef.current) return;
 
-      const paths = logoRef.current.querySelectorAll("path");
+  //     const paths = logoRef.current.querySelectorAll("path");
 
-      // Set initial state
-      // gsap.set(paths, { yPercent: 100, opacity: 0 });
+  //     // Set initial state
+  //     // gsap.set(paths, { yPercent: 100, opacity: 0 });
 
-      // Animate in
-      tl.current = gsap.timeline();
-      tl.current.from(paths, {
-        duration: 1,
-        opacity: 0,
-        yPercent: 100,
-        delay: 0.15,
-        ease: "expo.out",
-        stagger: 0.06,
-      });
-    },
-    { scope: logoRef }
-  );
+  //     // Animate in
+  //     tl.current = gsap.timeline();
+  //     tl.current.from(paths, {
+  //       duration: 1,
+  //       opacity: 0,
+  //       yPercent: 100,
+  //       delay: 0.15,
+  //       ease: "expo.out",
+  //       stagger: 0.06,
+  //     });
+  //   },
+  //   { scope: logoRef }
+  // );
 
   return (
     <svg

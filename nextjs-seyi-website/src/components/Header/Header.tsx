@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import { useLenis } from "@/contexts/LenisContext";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
 gsap.registerPlugin(useGSAP);
+import { useInView } from "framer-motion";
 
 const Header = () => {
   const { lenis } = useLenis();
@@ -16,9 +17,21 @@ const Header = () => {
   const menuOverlayRef = useRef<HTMLDivElement>(null);
   const menuLinksRef = useRef<HTMLAnchorElement[]>([]);
   const menuSocialRef = useRef<HTMLAnchorElement[]>([]);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(headerRef);
   const { scrollYProgress } = useScroll();
 
   const tl = useRef<gsap.core.Timeline | null>(null);
+
+  useGSAP(() => {
+    if (inView && headerRef.current) {
+      gsap.fromTo(
+        headerRef.current,
+        { y: -100 },
+        { y: 0, duration: 1, ease: "power2.out" },
+      );
+    }
+  }, [inView]);
 
   useGSAP(
     () => {
@@ -26,6 +39,7 @@ const Header = () => {
 
       tl.current = gsap
         .timeline({ paused: true })
+
         .to(menuOverlayRef.current, {
           duration: 1,
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
@@ -47,7 +61,7 @@ const Header = () => {
             duration: 0.75,
             ease: "power1.inOut",
           },
-          "<"
+          "<",
         )
         .fromTo(
           menuSocialRef.current,
@@ -65,10 +79,10 @@ const Header = () => {
             duration: 0.75,
             ease: "power1.inOut",
           },
-          "<"
+          "<",
         );
     },
-    { scope: menuOverlayRef }
+    { scope: menuOverlayRef },
   );
 
   useEffect(() => {
@@ -92,11 +106,14 @@ const Header = () => {
       restDelta: 0.001,
     }),
     [0, 1],
-    [0, 360]
+    [0, 360],
   );
   return (
     <header>
-      <nav className="flex justify-between items-center p-5 fixed  w-full z-5">
+      <nav
+        className="flex justify-between items-center p-5 fixed  w-full z-5"
+        ref={headerRef}
+      >
         <Link href="/">
           <motion.img
             src="/seyi-logo.svg"

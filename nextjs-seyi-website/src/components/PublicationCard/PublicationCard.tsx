@@ -14,12 +14,12 @@ export const PublicationCard = ({
       href={publication.url.current}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex flex-col gap-3 hover:scale-95 transition-all duration-300 ease-out"
+      className="flex flex-col gap-3 group "
     >
       <CustomImage
         imgSrc={urlFor(publication.coverImage).url()}
         imgAlt={publication.coverImageAlt}
-        classname="h-[350px] lg:h-[500px] object-cover"
+        classname="h-[350px] lg:h-[500px] object-cover group-hover:scale-95 transition-all duration-300 ease-out"
       />
 
       <div className="flex flex-col gap-1">
